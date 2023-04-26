@@ -1,0 +1,13 @@
+//
+//  Wire.xcconfig
+//  AWRealEstate
+//
+//  Created by aarthur on 4/26/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+PRODUCT_BUNDLE_IDENTIFIER = com.sample.wireviewer
+SERVICE_URL = http://api.duckduckgo.com/?q=the+wire+characters&format=json
+ENV_NAME = Wire
