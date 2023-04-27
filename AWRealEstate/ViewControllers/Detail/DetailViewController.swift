@@ -47,7 +47,7 @@ class DetailViewController: UIViewController {
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
             let vstack = UIStackView.stack(axis: .vertical)
-            vstack.add([nameLabel, roleLabel])
+            vstack.add([nameLabel, roleBanner])
             let hstack = UIStackView(arrangedSubviews: [vstack, imageView])
             stackView.remove(arrangedSubviews: stackView.arrangedSubviews)
             stackView.add(hstack)
