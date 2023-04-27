@@ -9,12 +9,12 @@ import Foundation
 
 struct Actor: Codable {
     let baseURLString: String
-    let headshot: Headshot
+    let iconInfo: IconInfo
     let summary: String
     
     private enum CodingKeys: String, CodingKey {
         case baseURLString = "FirstURL"
-        case headshot = "Icon"
+        case iconInfo = "Icon"
         case summary = "Text"
     }
 
@@ -29,5 +29,10 @@ struct Actor: Codable {
             return "No role".localized
         }
         return "\(summary.suffix(from: range.upperBound))"
+    }
+    var imageURL: URL? {
+        guard let baseURL = URL(string: baseURLString),
+              let url = URL(string: iconInfo.imageID, relativeTo: baseURL.deletingLastPathComponent() ) else { return .none }
+        return url
     }
 }

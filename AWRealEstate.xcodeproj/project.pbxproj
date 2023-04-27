@@ -17,7 +17,7 @@
 		D16315B129F9FC4000B3F261 /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315B029F9FC4000B3F261 /* UIView+Ex.swift */; };
 		D16315B329F9FE4B00B3F261 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315B229F9FE4B00B3F261 /* Film.swift */; };
 		D16315B529F9FE5700B3F261 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315B429F9FE5700B3F261 /* Actor.swift */; };
-		D16315B729FA01B700B3F261 /* Headshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315B629FA01B700B3F261 /* Headshot.swift */; };
+		D16315B729FA01B700B3F261 /* IconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315B629FA01B700B3F261 /* IconInfo.swift */; };
 		D16315B929FA03D700B3F261 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315B829FA03D700B3F261 /* ServiceManager.swift */; };
 		D16315BB29FA05E400B3F261 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315BA29FA05E400B3F261 /* API.swift */; };
 		D16315BD29FA06C200B3F261 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315BC29FA06C200B3F261 /* MasterViewModel.swift */; };
@@ -61,7 +61,7 @@
 		D16315B029F9FC4000B3F261 /* UIView+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ex.swift"; sourceTree = "<group>"; };
 		D16315B229F9FE4B00B3F261 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		D16315B429F9FE5700B3F261 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
-		D16315B629FA01B700B3F261 /* Headshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headshot.swift; sourceTree = "<group>"; };
+		D16315B629FA01B700B3F261 /* IconInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconInfo.swift; sourceTree = "<group>"; };
 		D16315B829FA03D700B3F261 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		D16315BA29FA05E400B3F261 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D16315BC29FA06C200B3F261 /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MasterViewModel.swift; path = AWRealEstate/MasterViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -225,7 +225,7 @@
 			children = (
 				D16315B229F9FE4B00B3F261 /* Film.swift */,
 				D16315B429F9FE5700B3F261 /* Actor.swift */,
-				D16315B629FA01B700B3F261 /* Headshot.swift */,
+				D16315B629FA01B700B3F261 /* IconInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -396,7 +396,7 @@
 				D16315AC29F9F9C200B3F261 /* SplitViewController.swift in Sources */,
 				D16315AE29F9FB1600B3F261 /* MasterViewController.swift in Sources */,
 				D16315C629FA3A1A00B3F261 /* Stackable.swift in Sources */,
-				D16315B729FA01B700B3F261 /* Headshot.swift in Sources */,
+				D16315B729FA01B700B3F261 /* IconInfo.swift in Sources */,
 				D16315C429FA39EA00B3F261 /* PlaceholderViewController.swift in Sources */,
 				D16315C229FA20C900B3F261 /* Constants.swift in Sources */,
 				D163159B29F9DDEA00B3F261 /* Environment.swift in Sources */,
