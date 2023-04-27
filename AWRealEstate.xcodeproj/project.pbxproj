@@ -23,6 +23,8 @@
 		D16315BD29FA06C200B3F261 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315BC29FA06C200B3F261 /* MasterViewModel.swift */; };
 		D16315BF29FA1AFA00B3F261 /* String+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315BE29FA1AFA00B3F261 /* String+Ex.swift */; };
 		D16315C229FA20C900B3F261 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315C129FA20C900B3F261 /* Constants.swift */; };
+		D16315C429FA39EA00B3F261 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315C329FA39EA00B3F261 /* PlaceholderViewController.swift */; };
+		D16315C629FA3A1A00B3F261 /* Stackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315C529FA3A1A00B3F261 /* Stackable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		D16315BC29FA06C200B3F261 /* MasterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MasterViewModel.swift; path = AWRealEstate/MasterViewModel.swift; sourceTree = SOURCE_ROOT; };
 		D16315BE29FA1AFA00B3F261 /* String+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ex.swift"; sourceTree = "<group>"; };
 		D16315C129FA20C900B3F261 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D16315C329FA39EA00B3F261 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
+		D16315C529FA3A1A00B3F261 /* Stackable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stackable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,7 @@
 		D163159E29F9DE2C00B3F261 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D16315C329FA39EA00B3F261 /* PlaceholderViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 		D16315A229F9DEC700B3F261 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D16315C529FA3A1A00B3F261 /* Stackable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -389,7 +395,9 @@
 				D16315B929FA03D700B3F261 /* ServiceManager.swift in Sources */,
 				D16315AC29F9F9C200B3F261 /* SplitViewController.swift in Sources */,
 				D16315AE29F9FB1600B3F261 /* MasterViewController.swift in Sources */,
+				D16315C629FA3A1A00B3F261 /* Stackable.swift in Sources */,
 				D16315B729FA01B700B3F261 /* Headshot.swift in Sources */,
+				D16315C429FA39EA00B3F261 /* PlaceholderViewController.swift in Sources */,
 				D16315C229FA20C900B3F261 /* Constants.swift in Sources */,
 				D163159B29F9DDEA00B3F261 /* Environment.swift in Sources */,
 				D16315BD29FA06C200B3F261 /* MasterViewModel.swift in Sources */,

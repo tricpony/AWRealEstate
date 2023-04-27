@@ -15,7 +15,7 @@ class SplitViewController: UISplitViewController {
         preferredDisplayMode = .oneBesideSecondary
         preferredSplitBehavior = .tile
         let minimumWidth = min(view.bounds.size.width, view.bounds.size.height)
-        minimumPrimaryColumnWidth = minimumWidth / 2
+        minimumPrimaryColumnWidth = minimumWidth / 2.5
         maximumPrimaryColumnWidth = minimumWidth
     }
 }

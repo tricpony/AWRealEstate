@@ -36,8 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func configRegularNavStack(in split: UISplitViewController) {
         let master = MasterViewController(isCompact: false)
-        let detail = UIViewController()
-//        let detail = PlaceholderViewController()
+        let detail = PlaceholderViewController()
         let nav = UINavigationController(rootViewController: detail)
         split.setViewController(master, for: .primary)
         split.setViewController(nav, for: .secondary)
