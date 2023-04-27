@@ -9,5 +9,6 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 PRODUCT_BUNDLE_IDENTIFIER = com.sample.simpsonsviewer
-SERVICE_URL = http://api.duckduckgo.com/?q=simpsons+characters&format=json
-ENV_NAME = Simpsons
+PRODUCT_NAME = Simpsons Character Viewer
+SERVICE_URL = http:/$()/api.duckduckgo.com/?q=simpsons+characters&format=json
+ENV_NAME = Simpson
