@@ -75,7 +75,12 @@ extension MasterViewController: UITableViewDelegate {
         let sb = UIStoryboard(name: "DetailViewController", bundle: .none)
         guard let detailViewController = sb.instantiateInitialViewController() as? DetailViewController else { return }
         detailViewController.actor = actor
-        navigationController?.pushViewController(detailViewController, animated: true)
+        if isCompact {
+            navigationController?.pushViewController(detailViewController, animated: true)
+        } else {
+            let nav = UINavigationController(rootViewController: detailViewController)
+            showDetailViewController(nav, sender: .none)
+        }
     }
 }
 

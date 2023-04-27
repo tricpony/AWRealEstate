@@ -32,6 +32,7 @@ extension UIView {
     }
     
     func center(to superView: UIView, direction: CenterDirection = .both) {
+        translatesAutoresizingMaskIntoConstraints = false
         switch direction {
         case .horizontal:
             NSLayoutConstraint.activate([centerXAnchor.constraint(equalTo: superView.centerXAnchor)])
@@ -43,5 +44,10 @@ extension UIView {
                 centerYAnchor.constraint(equalTo: superView.centerYAnchor)]
             )
         }
+    }
+    
+    func height(of height: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: height)])
     }
 }

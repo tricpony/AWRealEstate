@@ -11,9 +11,14 @@ class DetailViewController: UIViewController {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var roleLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var nameBanner: UIView!
     @IBOutlet weak var roleBanner: UIView!
+    @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageXCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var roleBannerEqualWidth: NSLayoutConstraint!
+    @IBOutlet weak var roleBannerHalfWidth: NSLayoutConstraint!
     var actor: Actor?
     let service = ServiceManager(session: .shared)
 
@@ -44,19 +49,19 @@ class DetailViewController: UIViewController {
         layer.borderWidth = 0.5
         layer.cornerRadius = 6.25
     }
+    
+    private func flipPriority(up: [NSLayoutConstraint], down: [NSLayoutConstraint]) {
+        up.forEach { $0.priority = .defaultHigh }
+        down.forEach { $0.priority = .defaultLow }
+    }
+
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         if UIDevice.current.orientation.isLandscape {
-            let vstack = UIStackView.stack(axis: .vertical)
-            vstack.add([nameLabel, roleBanner])
-            let hstack = UIStackView(arrangedSubviews: [vstack, imageView])
-            stackView.remove(arrangedSubviews: stackView.arrangedSubviews)
-            stackView.add(hstack)
+            flipPriority(up: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint],
+                         down: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint])
         } else {
-            let vstack = UIStackView.stack(axis: .vertical)
-            vstack.distribution = .equalSpacing
-            vstack.add([nameLabel, imageView, roleLabel])
-            stackView.remove(arrangedSubviews: stackView.arrangedSubviews)
-            stackView.add(vstack)
+            flipPriority(up: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint],
+                         down: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint])
         }
     }
 }
