@@ -1,18 +1,20 @@
 //
 //  MasterViewController.swift
-//  FinalFourLab
+//  AWRealEstate
 //
-//  Created by aarthur on 7/27/21.
+//  Created by aarthur on 4/26/23.
 //
 
 import UIKit
 
 /// Contains a grid of all products.
-class MasterViewController: UIViewController, UICollectionViewDelegate {
+class MasterViewController: UIViewController {
     lazy var tableView: UITableView = {
         UITableView()
     }()
-    var viewModel = MasterViewModel()
+    lazy var viewModel: MasterViewModel = {
+        MasterViewModel(isCompact: isCompact)
+    }()
     let isCompact: Bool
 
     init(isCompact: Bool) {
@@ -23,21 +25,13 @@ class MasterViewController: UIViewController, UICollectionViewDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    /// Setup the view.
-    private func configureView() {
-        view.addSubview(tableView)
-        tableView.pin(to: view)
-        tableView.dataSource = viewModel
-        registerAssets()
-    }
 
     /// Register table view cell class data source to create those cells, and kick off the load.
     private func registerAssets() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: MasterViewModel.reuseIdentifier)
     }
 
-    /// Parse product data located in the app bundle.  These are mapped to an array of Product and displayed in the collection view.
+    /// Invoke service to load film cast.
     private func loadData() {
         viewModel.fetchFilmResource { [weak self] error in
             guard let error = error else {
@@ -53,10 +47,35 @@ class MasterViewController: UIViewController, UICollectionViewDelegate {
             self?.present(alert, animated: true)
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         configureView()
     }
+
+    /// Setup the view.
+    private func configureView() {
+        view.addSubview(tableView)
+        tableView.pin(to: view)
+        tableView.dataSource = viewModel
+        tableView.delegate = self
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: .zero, style: .plain, target: nil, action: nil)
+        registerAssets()
+    }
 }
+
+extension MasterViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isCompact {
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
+        let actor = viewModel.film?.orderedCast[indexPath.row]
+        let sb = UIStoryboard(name: "DetailViewController", bundle: .none)
+        guard let detailViewController = sb.instantiateInitialViewController() as? DetailViewController else { return }
+        detailViewController.actor = actor
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+

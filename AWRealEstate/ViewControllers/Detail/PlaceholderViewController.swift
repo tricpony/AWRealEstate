@@ -30,11 +30,6 @@ class PlaceholderViewController: UIViewController {
         verticalStack.add(placeHolderLabel)
         mainStackView.add(verticalStack)
         view.addSubview(mainStackView)
-        NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-        ])
+        mainStackView.pin(to: view)
     }
 }

@@ -27,6 +27,10 @@ extension UIStackView {
     func add(_ stackables: [Stackable]) {
         stackables.forEach { $0.configure(stack: self) }
     }
+    
+    func remove(arrangedSubviews views: [UIView]) {
+        views.forEach { removeArrangedSubview($0) }
+    }
 }
 
 extension UIView: Stackable {
