@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imageXCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var roleBannerEqualWidth: NSLayoutConstraint!
     @IBOutlet weak var roleBannerHalfWidth: NSLayoutConstraint!
+    @IBOutlet weak var roleLabelTrailing: NSLayoutConstraint!
     var actor: Actor?
     let service = ServiceManager(session: .shared)
 
@@ -55,13 +56,21 @@ class DetailViewController: UIViewController {
         down.forEach { $0.priority = .defaultLow }
     }
 
-//    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-//        if UIDevice.current.orientation.isLandscape {
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            flipPriority(up: [imageTrailingConstraint], down: [imageXCenterConstraint])
+            roleBanner.backgroundColor = UIColor(named: "RoleBannerBackground-LS")
+            roleLabelTrailing.constant = 145
+            view.bringSubviewToFront(imageView)
+            view.sendSubviewToBack(roleBanner)
 //            flipPriority(up: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint],
 //                         down: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint])
-//        } else {
+        } else {
+            flipPriority(up: [imageXCenterConstraint], down: [imageTrailingConstraint])
+            roleBanner.backgroundColor = UIColor(named: "RoleBannerBackground")
+            roleLabelTrailing.constant = 12
 //            flipPriority(up: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint],
 //                         down: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint])
-//        }
-//    }
+        }
+    }
 }
