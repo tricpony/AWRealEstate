@@ -28,6 +28,10 @@ class ServiceManager {
         self.session = session
     }
 
+    /// Perform arbitrary web service at address *url*.
+    /// - Parameters:
+    ///   - url: Web address of service.
+    ///   - handler: Call back to indicate success or failure associated with payload or error.
     func startService(at url: URL, handler: @escaping (ServiceResult) -> Void) {
         inFlight = true
         session.dataTaskPublisher(for: url)

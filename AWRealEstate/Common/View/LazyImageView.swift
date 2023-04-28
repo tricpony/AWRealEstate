@@ -44,6 +44,7 @@ class LazyImageView: UIView {
         ])
     }
     
+    /// Use this for table cells.
     func prepareForReuse() {
         imageView.image = .none
     }
