@@ -30,6 +30,7 @@
                                 <color key="backgroundColor" name="NameBannerBackground"/>
                                 <constraints>
                                     <constraint firstItem="PXk-br-Gl2" firstAttribute="centerX" secondItem="Vb4-U1-5mN" secondAttribute="centerX" id="6xe-RE-yS1"/>
+                                    <constraint firstItem="PXk-br-Gl2" firstAttribute="leading" secondItem="Vb4-U1-5mN" secondAttribute="leading" priority="250" constant="20" symbolic="YES" id="DUC-Dk-zH5"/>
                                     <constraint firstAttribute="height" constant="75" id="OZz-Ig-F3T"/>
                                     <constraint firstItem="PXk-br-Gl2" firstAttribute="top" secondItem="Vb4-U1-5mN" secondAttribute="top" constant="26" id="XFs-nE-V2s"/>
                                     <constraint firstAttribute="bottom" secondItem="PXk-br-Gl2" secondAttribute="bottom" constant="24.329999999999998" id="t5v-c7-PVA"/>
@@ -102,14 +103,14 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="imageTrailingConstraint" destination="Fav-NJ-D7S" id="ufg-Vj-C5R"/>
+                        <outlet property="imageTrailing" destination="Fav-NJ-D7S" id="ufg-Vj-C5R"/>
                         <outlet property="imageView" destination="Ygy-Ak-969" id="caj-2e-Srs"/>
-                        <outlet property="imageXCenterConstraint" destination="cqJ-dH-TkA" id="FbN-iW-x86"/>
+                        <outlet property="imageXCenter" destination="cqJ-dH-TkA" id="FbN-iW-x86"/>
                         <outlet property="nameBanner" destination="Vb4-U1-5mN" id="A47-ne-jti"/>
                         <outlet property="nameLabel" destination="PXk-br-Gl2" id="Jys-u4-EwT"/>
+                        <outlet property="nameLabelLeading" destination="DUC-Dk-zH5" id="Iar-nb-bOe"/>
+                        <outlet property="nameLabelXCenter" destination="6xe-RE-yS1" id="AAm-mv-wiX"/>
                         <outlet property="roleBanner" destination="Nxu-cj-8do" id="H4A-jT-6Pk"/>
-                        <outlet property="roleBannerEqualWidth" destination="JWh-Lf-TrL" id="zfa-Yr-yge"/>
-                        <outlet property="roleBannerHalfWidth" destination="cvy-bI-v06" id="ddj-Fc-ezW"/>
                         <outlet property="roleLabel" destination="6cs-A1-be5" id="itS-1Q-bLI"/>
                         <outlet property="roleLabelTrailing" destination="Ppt-Zj-9uz" id="VBW-bM-cxr"/>
                     </connections>

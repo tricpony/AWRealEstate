@@ -13,12 +13,10 @@ class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var nameBanner: UIView!
     @IBOutlet weak var roleBanner: UIView!
-    @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageXCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var roleBannerEqualWidth: NSLayoutConstraint!
-    @IBOutlet weak var roleBannerHalfWidth: NSLayoutConstraint!
+    @IBOutlet weak var nameLabelXCenter: NSLayoutConstraint!
+    @IBOutlet weak var nameLabelLeading: NSLayoutConstraint!
+    @IBOutlet weak var imageTrailing: NSLayoutConstraint!
+    @IBOutlet weak var imageXCenter: NSLayoutConstraint!
     @IBOutlet weak var roleLabelTrailing: NSLayoutConstraint!
     var actor: Actor?
     let service = ServiceManager(session: .shared)
@@ -57,20 +55,17 @@ class DetailViewController: UIViewController {
     }
 
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        let gap = 7.0
         if UIDevice.current.orientation.isLandscape {
-            flipPriority(up: [imageTrailingConstraint], down: [imageXCenterConstraint])
+            flipPriority(up: [imageTrailing, nameLabelLeading], down: [imageXCenter, nameLabelXCenter])
             roleBanner.backgroundColor = UIColor(named: "RoleBannerBackground-LS")
-            roleLabelTrailing.constant = 145
+            roleLabelTrailing.constant += imageView.frame.width + gap
             view.bringSubviewToFront(imageView)
             view.sendSubviewToBack(roleBanner)
-//            flipPriority(up: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint],
-//                         down: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint])
         } else {
-            flipPriority(up: [imageXCenterConstraint], down: [imageTrailingConstraint])
+            flipPriority(up: [imageXCenter, nameLabelXCenter], down: [imageTrailing, nameLabelLeading])
             roleBanner.backgroundColor = UIColor(named: "RoleBannerBackground")
-            roleLabelTrailing.constant = 12
-//            flipPriority(up: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint],
-//                         down: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint])
+            roleLabelTrailing.constant -= imageView.frame.width + gap
         }
     }
 }

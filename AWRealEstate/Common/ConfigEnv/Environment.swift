@@ -37,4 +37,8 @@ public enum Environment {
         }
         return env
     }()
+    
+    static var isSimpsons: Bool {
+        Self.environmentName == "Simpson"
+    }
 }
