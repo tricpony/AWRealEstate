@@ -50,6 +50,8 @@ class DetailViewController: UIViewController {
         layer.borderColor = UIColor(named: "RoleBannerBorder")?.cgColor
         layer.borderWidth = 0.5
         layer.cornerRadius = 6.25
+        view.bringSubviewToFront(imageView)
+        view.sendSubviewToBack(roleBanner)
     }
     
     private func flipPriority(up: [NSLayoutConstraint], down: [NSLayoutConstraint]) {
@@ -63,8 +65,6 @@ class DetailViewController: UIViewController {
             flipPriority(up: [imageTrailing, nameLabelLeading], down: [imageXCenter, nameLabelXCenter])
             roleBanner.backgroundColor = UIColor(named: "RoleBannerBackground-LS")
             roleLabelTrailing.constant += imageView.frame.width + gap
-            view.bringSubviewToFront(imageView)
-            view.sendSubviewToBack(roleBanner)
         } else {
             flipPriority(up: [imageXCenter, nameLabelXCenter], down: [imageTrailing, nameLabelLeading])
             roleBanner.backgroundColor = UIColor(named: "RoleBannerBackground")
