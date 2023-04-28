@@ -54,12 +54,18 @@ class DetailViewController: UIViewController {
         view.sendSubviewToBack(roleBanner)
     }
     
+    /// Adjust constraint priority.
+    /// - Parameters:
+    ///   - up: Set thse to high.
+    ///   - down: St these to low.
     private func flipPriority(up: [NSLayoutConstraint], down: [NSLayoutConstraint]) {
         up.forEach { $0.priority = .defaultHigh }
         down.forEach { $0.priority = .defaultLow }
     }
 
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        guard view.traitCollection.verticalSizeClass != newCollection.verticalSizeClass ||
+              view.traitCollection.horizontalSizeClass != newCollection.horizontalSizeClass else { return }
         let gap = 7.0
         if UIDevice.current.orientation.isLandscape {
             flipPriority(up: [imageTrailing, nameLabelLeading], down: [imageXCenter, nameLabelXCenter])

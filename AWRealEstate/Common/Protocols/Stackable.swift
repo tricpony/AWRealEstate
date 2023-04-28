@@ -14,20 +14,33 @@ protocol Stackable {
 
 extension UIStackView {
 
+    /// Convenience to init stack with axis.
+    /// - Parameters:
+    ///   - axis: Desired axis, defaults to horizontal.
+    /// - Returns: Instance of stack view.
     static func stack(axis: NSLayoutConstraint.Axis = .horizontal) -> UIStackView {
         let stack = UIStackView()
         stack.axis = axis
         return stack
     }
     
+    /// Add single item to arranged views.
+    /// - Parameters:
+    ///   - stackable: Web address of service.
     func add(_ stackable: Stackable) {
         stackable.configure(stack: self)
     }
 
+    /// Add array of items to arranged views.
+    /// - Parameters:
+    ///   - stackable: Web address of service.
     func add(_ stackables: [Stackable]) {
         stackables.forEach { $0.configure(stack: self) }
     }
     
+    /// Remove items from arranged views.
+    /// - Parameters:
+    ///   - views: Remove these.
     func remove(arrangedSubviews views: [UIView]) {
         views.forEach { removeArrangedSubview($0) }
     }
@@ -51,6 +64,9 @@ extension UIView: Stackable {
 }
 
 extension CGFloat: Stackable {
+    /// Add float as spacing.
+    /// - Parameters:
+    ///   - stack: Stack to apply *self* as space.
     func configure(stack: UIStackView) {
         stack.spacing = self
     }

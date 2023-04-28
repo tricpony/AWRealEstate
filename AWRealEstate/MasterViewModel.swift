@@ -35,6 +35,9 @@ class MasterViewModel: NSObject {
         self.isCompact = isCompact
     }
 
+    /// Perform service call and send results to *handler*.
+    /// - Parameters:
+    ///   - handler: Closure to pass results.
     func fetchFilmResource(handler: @escaping FetchHandler) {
         service.startService(at: API.serviceAddress) { [weak self] result in
             switch result {

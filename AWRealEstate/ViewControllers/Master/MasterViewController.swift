@@ -66,6 +66,7 @@ class MasterViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: MasterViewModel.reuseIdentifier)
     }
 
+    /// Setup search controller.
     private func configureSearch() {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = viewModel

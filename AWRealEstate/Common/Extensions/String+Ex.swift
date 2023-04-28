@@ -9,13 +9,20 @@
 import UIKit
 
 extension String {
+    /// Empty stirng.
     static var zero: String {
         ""
     }
+    /// Convenience to access localized mapping.
     var localized: String {
         NSLocalizedString(self, comment: "no comment")
     }
     
+    /// Highlight *stringInside* with specified colors.
+    /// - Parameters:
+    ///   - stringInside: String inside *self* to hightlight.
+    ///   - backgroundColor: Color to apply behind *stringInside*
+    ///   - foregroundColor: Color to apply to characters of *stringInside*
     func hightlightAttributedString(of stringInside: String,
                                     backgroundColor: UIColor?,
                                     foregroundColor: UIColor?) -> NSAttributedString {
