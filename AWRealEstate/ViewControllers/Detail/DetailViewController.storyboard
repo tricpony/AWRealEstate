@@ -42,9 +42,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDC-Bt-foA">
                                 <rect key="frame" x="20" y="147.66666666666663" width="353" height="557"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ygy-Ak-969">
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ygy-Ak-969" customClass="LazyImageView" customModule="AWRealEstate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="20" width="353" height="517"/>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -110,7 +110,7 @@
                     </view>
                     <connections>
                         <outlet property="imageTrailing" destination="Fav-NJ-D7S" id="ufg-Vj-C5R"/>
-                        <outlet property="imageView" destination="Ygy-Ak-969" id="caj-2e-Srs"/>
+                        <outlet property="imageView" destination="Ygy-Ak-969" id="HGT-Li-dAZ"/>
                         <outlet property="imageXCenter" destination="cqJ-dH-TkA" id="FbN-iW-x86"/>
                         <outlet property="nameBanner" destination="Vb4-U1-5mN" id="A47-ne-jti"/>
                         <outlet property="nameLabel" destination="PXk-br-Gl2" id="Jys-u4-EwT"/>

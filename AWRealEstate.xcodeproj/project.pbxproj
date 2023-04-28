@@ -27,6 +27,8 @@
 		D16315C629FA3A1A00B3F261 /* Stackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315C529FA3A1A00B3F261 /* Stackable.swift */; };
 		D16315C829FA94A900B3F261 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315C729FA94A900B3F261 /* DetailViewController.swift */; };
 		D16315CA29FA94E700B3F261 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D16315C929FA94E700B3F261 /* DetailViewController.storyboard */; };
+		D16315CC29FC4C2600B3F261 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315CB29FC4C2600B3F261 /* ImageModel.swift */; };
+		D16315CF29FC4CA500B3F261 /* LazyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16315CE29FC4CA500B3F261 /* LazyImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		D16315C529FA3A1A00B3F261 /* Stackable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stackable.swift; sourceTree = "<group>"; };
 		D16315C729FA94A900B3F261 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D16315C929FA94E700B3F261 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
+		D16315CB29FC4C2600B3F261 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		D16315CE29FC4CA500B3F261 /* LazyImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 		D163159129F9DD2000B3F261 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D16315CD29FC4C8C00B3F261 /* View */,
 				D16315AF29F9FBAA00B3F261 /* Extensions */,
 				D163159829F9DD8400B3F261 /* Network */,
 				D16315A029F9DE9700B3F261 /* Model */,
@@ -247,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				D16315C529FA3A1A00B3F261 /* Stackable.swift */,
+				D16315CB29FC4C2600B3F261 /* ImageModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -266,6 +272,14 @@
 				D16315C129FA20C900B3F261 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		D16315CD29FC4C8C00B3F261 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D16315CE29FC4CA500B3F261 /* LazyImageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,10 +419,12 @@
 				D16315C629FA3A1A00B3F261 /* Stackable.swift in Sources */,
 				D16315B729FA01B700B3F261 /* IconInfo.swift in Sources */,
 				D16315C429FA39EA00B3F261 /* PlaceholderViewController.swift in Sources */,
+				D16315CF29FC4CA500B3F261 /* LazyImageView.swift in Sources */,
 				D16315C229FA20C900B3F261 /* Constants.swift in Sources */,
 				D16315C829FA94A900B3F261 /* DetailViewController.swift in Sources */,
 				D163159B29F9DDEA00B3F261 /* Environment.swift in Sources */,
 				D16315BD29FA06C200B3F261 /* MasterViewModel.swift in Sources */,
+				D16315CC29FC4C2600B3F261 /* ImageModel.swift in Sources */,
 				D163154729F95B8400B3F261 /* AppDelegate.swift in Sources */,
 				D16315B329F9FE4B00B3F261 /* Film.swift in Sources */,
 				D16315BF29FA1AFA00B3F261 /* String+Ex.swift in Sources */,

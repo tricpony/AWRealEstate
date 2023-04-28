@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Actor: Codable {
+struct Actor: Codable, ImageModel {
     let baseURLString: String
     let iconInfo: IconInfo
     let summary: String

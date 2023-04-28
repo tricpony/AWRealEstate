@@ -10,7 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var roleLabel: UILabel!
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var imageView: LazyImageView!
     @IBOutlet weak var nameBanner: UIView!
     @IBOutlet weak var roleBanner: UIView!
     @IBOutlet weak var nameLabelXCenter: NSLayoutConstraint!
@@ -26,18 +26,7 @@ class DetailViewController: UIViewController {
         configureView()
         nameLabel.text = actor?.name
         roleLabel.text = actor?.role
-        guard let imageURL = actor?.imageURL else {
-            imageView.image = UIImage(named: "Placeholder")
-            return
-        }
-        service.startService(at: imageURL) { [weak self] result in
-            switch result {
-            case .success(let data):
-                self?.imageView.image = UIImage(data: data)
-            default:
-                return
-            }
-        }
+        imageView.performImageService(model: actor)
     }
     
     /// Setup the view.
