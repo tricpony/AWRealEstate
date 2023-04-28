@@ -55,13 +55,13 @@ class DetailViewController: UIViewController {
         down.forEach { $0.priority = .defaultLow }
     }
 
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        if UIDevice.current.orientation.isLandscape {
-            flipPriority(up: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint],
-                         down: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint])
-        } else {
-            flipPriority(up: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint],
-                         down: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint])
-        }
-    }
+//    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+//        if UIDevice.current.orientation.isLandscape {
+//            flipPriority(up: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint],
+//                         down: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint])
+//        } else {
+//            flipPriority(up: [imageBottomConstraint, imageXCenterConstraint, roleBannerEqualWidth, imageXCenterConstraint],
+//                         down: [imageTopConstraint, imageTrailingConstraint, roleBannerHalfWidth, imageTopConstraint])
+//        }
+//    }
 }
