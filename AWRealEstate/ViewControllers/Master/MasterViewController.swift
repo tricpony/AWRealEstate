@@ -9,13 +9,14 @@ import UIKit
 
 /// Contains a grid of all products.
 class MasterViewController: UIViewController {
-    lazy var tableView: UITableView = {
-        UITableView()
-    }()
-    lazy var viewModel: MasterViewModel = {
-        MasterViewModel(isCompact: isCompact)
-    }()
     let isCompact: Bool
+    let tableView = UITableView()
+    lazy var viewModel: MasterViewModel = {
+        MasterViewModel(searchHandler: handleSearchUpdate, isCompact: isCompact)
+    }()
+    lazy var handleSearchUpdate: () -> Void = { [weak self] in
+        self?.tableView.reloadData()
+    }
 
     init(isCompact: Bool) {
         self.isCompact = isCompact
@@ -24,11 +25,6 @@ class MasterViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    /// Register table view cell class data source to create those cells, and kick off the load.
-    private func registerAssets() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MasterViewModel.reuseIdentifier)
     }
 
     /// Invoke service to load film cast.
@@ -62,6 +58,20 @@ class MasterViewController: UIViewController {
         tableView.delegate = self
         navigationItem.backBarButtonItem = UIBarButtonItem(title: .zero, style: .plain, target: nil, action: nil)
         registerAssets()
+        configureSearch()
+    }
+    
+    /// Register table view cell class data source to create cells.
+    private func registerAssets() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: MasterViewModel.reuseIdentifier)
+    }
+
+    private func configureSearch() {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = viewModel
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Find".localized
+        navigationItem.searchController = search
     }
 }
 
@@ -71,7 +81,7 @@ extension MasterViewController: UITableViewDelegate {
         if isCompact {
             tableView.deselectRow(at: indexPath, animated: false)
         }
-        let actor = viewModel.film?.orderedCast[indexPath.row]
+        let actor = viewModel.filteredCast[indexPath.row]
         let sb = UIStoryboard(name: "DetailViewController", bundle: .none)
         guard let detailViewController = sb.instantiateInitialViewController() as? DetailViewController else { return }
         detailViewController.actor = actor
