@@ -42,6 +42,7 @@ extension MasterViewModel: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Self.reuseIdentifier, for: indexPath)
         let actor = film?.orderedCast[indexPath.row]
         cell.textLabel?.text = actor?.name
+        cell.textLabel?.highlightedTextColor = .white
         cell.textLabel?.adjustsFontForContentSizeCategory = true
         return cell
     }

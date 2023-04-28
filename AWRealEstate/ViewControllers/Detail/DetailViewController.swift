@@ -26,7 +26,10 @@ class DetailViewController: UIViewController {
         configureView()
         nameLabel.text = actor?.name
         roleLabel.text = actor?.role
-        guard let imageURL = actor?.imageURL else { return }
+        guard let imageURL = actor?.imageURL else {
+            imageView.image = UIImage(named: "Placeholder")
+            return
+        }
         service.startService(at: imageURL) { [weak self] result in
             switch result {
             case .success(let data):
