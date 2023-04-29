@@ -74,6 +74,7 @@
 		D16315D029FC87AC00B3F261 /* Mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mock.json; sourceTree = "<group>"; };
 		D16315D229FC8F3300B3F261 /* Mock.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Mock.xcconfig; sourceTree = "<group>"; };
 		D16315D729FD4D4F00B3F261 /* MasterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewModelTests.swift; sourceTree = "<group>"; };
+		D16315D929FD7FC100B3F261 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 		D163153A29F95B8300B3F261 = {
 			isa = PBXGroup;
 			children = (
+				D16315D929FD7FC100B3F261 /* README.md */,
 				D163159329F9DD6800B3F261 /* Configurations */,
 				D163154529F95B8400B3F261 /* AWRealEstate */,
 				D163155C29F95B8500B3F261 /* AWRealEstateTests */,

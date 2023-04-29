@@ -48,4 +48,11 @@ final class MasterViewModelTests: XCTestCase {
         viewModel.fetchFilmResource(handler: handler)
         waitForExpectations(timeout: 2)
     }
+    
+    func testFilter() {
+        let exp = expectation(description: "Loading filter")
+        let viewModel = MasterViewModel(filterHandler: { exp.fulfill() })
+        viewModel.searchTerm = "test"
+        waitForExpectations(timeout: 1)
+    }
 }
