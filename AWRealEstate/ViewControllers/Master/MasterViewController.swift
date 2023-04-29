@@ -12,7 +12,7 @@ class MasterViewController: UIViewController {
     let isCompact: Bool
     let tableView = UITableView()
     lazy var viewModel: MasterViewModel = {
-        MasterViewModel(searchHandler: handleSearchUpdate, isCompact: isCompact)
+        MasterViewModel(filterHandler: handleSearchUpdate)
     }()
     lazy var handleSearchUpdate: () -> Void = { [weak self] in
         self?.tableView.reloadData()

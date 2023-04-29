@@ -1,0 +1,13 @@
+//
+//  Mock.xcconfig
+//  AWRealEstate
+//
+//  Created by aarthur on 4/28/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+PRODUCT_BUNDLE_IDENTIFIER = com.mock.simpsonsviewer
+PRODUCT_NAME = Simpsons Character Viewer
+ENV_NAME = Mock

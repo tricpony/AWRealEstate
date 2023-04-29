@@ -8,21 +8,22 @@
 import UIKit
 
 typealias FetchHandler = (ServiceError?) -> Void
+typealias FilterHandler = () -> Void
 class MasterViewModel: NSObject {
     static let reuseIdentifier = "Cell"
     var film: Film?
-    let isCompact: Bool
-    let searchHandler: () -> Void
+    let filterHandler: () -> Void
+    let serviceAddress: URL
     let service = ServiceManager(session: .shared)
     var searchTerm: String = .zero {
         didSet {
             guard !searchTerm.isEmpty else {
                 filteredCast = originalCast
-                searchHandler()
+                filterHandler()
                 return
             }
             filteredCast = originalCast.filter { $0.name.contains(searchTerm) }
-            searchHandler()
+            filterHandler()
         }
     }
     var originalCast: [Actor] {
@@ -30,16 +31,16 @@ class MasterViewModel: NSObject {
     }
     var filteredCast = [Actor]()
     
-    init(searchHandler: @escaping () -> Void, isCompact: Bool) {
-        self.searchHandler = searchHandler
-        self.isCompact = isCompact
+    init(filterHandler: @escaping FilterHandler, serviceAddress: URL = API.serviceAddress) {
+        self.filterHandler = filterHandler
+        self.serviceAddress = serviceAddress
     }
 
     /// Perform service call and send results to *handler*.
     /// - Parameters:
     ///   - handler: Closure to pass results.
     func fetchFilmResource(handler: @escaping FetchHandler) {
-        service.startService(at: API.serviceAddress) { [weak self] result in
+        service.startService(at: serviceAddress) { [weak self] result in
             switch result {
             case .success(let data):
                 let decoder = JSONDecoder()

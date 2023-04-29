@@ -36,7 +36,12 @@ class ServiceManager {
         inFlight = true
         session.dataTaskPublisher(for: url)
             .timeout(.seconds(timeOut), scheduler: DispatchQueue.main)
-            .map(\.data)
+            .tryMap() { element -> Data in
+                if (element.response as? HTTPURLResponse)?.statusCode != 200 {
+                    handler(.failure(ServiceError(errorDescription: URLError(.badServerResponse).localizedDescription)))
+                  }
+                return element.data
+            }
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 self?.inFlight = false
