@@ -44,7 +44,7 @@ final class MasterViewModelTests: XCTestCase {
         let expFilter = expectation(description: "Filtering")
         let viewModel = MasterViewModel { expFilter.fulfill() }
         viewModel.fetchFilmResource { _ in
-            viewModel.searchTerm = "Li"
+            viewModel.searchTerm = "li"
         }
         waitForExpectations(timeout: 1)
         XCTAssertEqual(viewModel.filteredCast.count, 5)
@@ -55,6 +55,16 @@ final class MasterViewModelTests: XCTestCase {
         let viewModel = MasterViewModel { expFilter.fulfill() }
         viewModel.fetchFilmResource { _ in
             viewModel.searchTerm = "Lis"
+        }
+        waitForExpectations(timeout: 1)
+        XCTAssertEqual(viewModel.filteredCast.count, 1)
+    }
+
+    func testFilterUniqueUppercaseResult() {
+        let expFilter = expectation(description: "Filtering")
+        let viewModel = MasterViewModel { expFilter.fulfill() }
+        viewModel.fetchFilmResource { _ in
+            viewModel.searchTerm = "LIS"
         }
         waitForExpectations(timeout: 1)
         XCTAssertEqual(viewModel.filteredCast.count, 1)
