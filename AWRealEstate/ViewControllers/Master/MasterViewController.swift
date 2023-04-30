@@ -72,6 +72,7 @@ class MasterViewController: UIViewController {
         search.searchResultsUpdater = viewModel
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Find".localized
+        search.searchBar.autocapitalizationType = .none
         navigationItem.searchController = search
     }
 }

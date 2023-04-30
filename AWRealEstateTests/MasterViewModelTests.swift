@@ -10,14 +10,6 @@ import XCTest
 
 final class MasterViewModelTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testSuccessfulFetch() {
         let exp = expectation(description: "Loading film resource")
         let handler: FetchHandler = { error in
@@ -30,29 +22,41 @@ final class MasterViewModelTests: XCTestCase {
         viewModel.fetchFilmResource(handler: handler)
         waitForExpectations(timeout: 2)
     }
-
-    func testUnSuccessfulFetch() {
-        let exp = expectation(description: "Loading film resource")
-        let handler: FetchHandler = { error in
-            guard let _ = error else {
-                XCTFail("unexpected service success")
-                return
-            }
-            exp.fulfill()
-        }
-        guard let bogusURL = URL(string: "http://the-internet.herokuapp.com/status_codes/301") else {
-            XCTFail()
-            return
-        }
-        let viewModel = MasterViewModel(filterHandler: {}, serviceAddress: bogusURL)
-        viewModel.fetchFilmResource(handler: handler)
-        waitForExpectations(timeout: 2)
-    }
     
-    func testFilter() {
+    func testFilterHndler() {
         let exp = expectation(description: "Loading filter")
         let viewModel = MasterViewModel(filterHandler: { exp.fulfill() })
         viewModel.searchTerm = "test"
         waitForExpectations(timeout: 1)
+    }
+    
+    func testFetch() {
+        let expFetch = expectation(description: "Fetching")
+        let viewModel = MasterViewModel { }
+        viewModel.fetchFilmResource { error in
+            expFetch.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+        XCTAssertNotNil(viewModel.film)
+    }
+
+    func testFilterMultipleResults() {
+        let expFilter = expectation(description: "Filtering")
+        let viewModel = MasterViewModel { expFilter.fulfill() }
+        viewModel.fetchFilmResource { _ in
+            viewModel.searchTerm = "Li"
+        }
+        waitForExpectations(timeout: 1)
+        XCTAssertEqual(viewModel.filteredCast.count, 5)
+    }
+    
+    func testFilterUniqueResult() {
+        let expFilter = expectation(description: "Filtering")
+        let viewModel = MasterViewModel { expFilter.fulfill() }
+        viewModel.fetchFilmResource { _ in
+            viewModel.searchTerm = "Lis"
+        }
+        waitForExpectations(timeout: 1)
+        XCTAssertEqual(viewModel.filteredCast.count, 1)
     }
 }

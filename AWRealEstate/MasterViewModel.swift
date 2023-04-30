@@ -13,7 +13,6 @@ class MasterViewModel: NSObject {
     static let reuseIdentifier = "Cell"
     var film: Film?
     let filterHandler: () -> Void
-    let serviceAddress: URL
     let service = ServiceManager(session: .shared)
     var searchTerm: String = .zero {
         didSet {
@@ -22,7 +21,7 @@ class MasterViewModel: NSObject {
                 filterHandler()
                 return
             }
-            filteredCast = originalCast.filter { $0.name.contains(searchTerm) }
+            filteredCast = originalCast.filter { $0.name.range(of: searchTerm, options: .caseInsensitive) != nil  }
             filterHandler()
         }
     }
@@ -31,16 +30,15 @@ class MasterViewModel: NSObject {
     }
     var filteredCast = [Actor]()
     
-    init(filterHandler: @escaping FilterHandler, serviceAddress: URL = API.serviceAddress) {
+    init(filterHandler: @escaping FilterHandler) {
         self.filterHandler = filterHandler
-        self.serviceAddress = serviceAddress
     }
 
     /// Perform service call and send results to *handler*.
     /// - Parameters:
     ///   - handler: Closure to pass results.
     func fetchFilmResource(handler: @escaping FetchHandler) {
-        service.startService(at: serviceAddress) { [weak self] result in
+        service.startService(at: API.serviceAddress) { [weak self] result in
             switch result {
             case .success(let data):
                 let decoder = JSONDecoder()

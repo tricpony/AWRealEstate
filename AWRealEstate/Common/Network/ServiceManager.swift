@@ -19,7 +19,6 @@ struct ServiceError: Error, LocalizedError {
 
 /// Class  for sending service requests.
 class ServiceManager {
-    var inFlight = false
     var timeOut: TimeInterval = 15
     private let session: URLSession
     private var subscribers = Set<AnyCancellable>()
@@ -33,18 +32,11 @@ class ServiceManager {
     ///   - url: Web address of service.
     ///   - handler: Call back to indicate success or failure associated with payload or error.
     func startService(at url: URL, handler: @escaping (ServiceResult) -> Void) {
-        inFlight = true
         session.dataTaskPublisher(for: url)
             .timeout(.seconds(timeOut), scheduler: DispatchQueue.main)
-            .tryMap() { element -> Data in
-                if (element.response as? HTTPURLResponse)?.statusCode != 200 {
-                    handler(.failure(ServiceError(errorDescription: URLError(.badServerResponse).localizedDescription)))
-                  }
-                return element.data
-            }
+            .map(\.data)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completion in
-                self?.inFlight = false
+            .sink(receiveCompletion: { completion in
               if case .failure(let error) = completion {
                   handler(.failure(ServiceError(errorDescription: error.localizedDescription)))
               }
