@@ -164,8 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				D163159429F9DD6800B3F261 /* Simpsons.xcconfig */,
-				D163159529F9DD6800B3F261 /* Wire.xcconfig */,
 				D16315D229FC8F3300B3F261 /* Mock.xcconfig */,
+				D163159529F9DD6800B3F261 /* Wire.xcconfig */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
