@@ -39,17 +39,6 @@
                ReferencedContainer = "container:AWRealEstate.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D163156229F95B8500B3F261"
-               BuildableName = "AWRealEstateUITests.xctest"
-               BlueprintName = "AWRealEstateUITests"
-               ReferencedContainer = "container:AWRealEstate.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

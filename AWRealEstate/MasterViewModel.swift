@@ -25,9 +25,9 @@ class MasterViewModel: NSObject {
             filterHandler()
         }
     }
-    var originalCast: [Actor] {
+    lazy var originalCast: [Actor] = {
         film?.orderedCast ?? []
-    }
+    }()
     var filteredCast = [Actor]()
     
     init(filterHandler: @escaping FilterHandler) {
