@@ -66,6 +66,7 @@ class LazyImageView: UIView {
                 self?.imageView.contentMode = self?.contentMode ?? .scaleAspectFit
                 self?.imageView.image = UIImage(data: data)
             case .failure(let error):
+                self?.imageView.image = UIImage(named: "Placeholder")
                 debugPrint("*** Error: \(String(describing: error.errorDescription))")
             }
         }
