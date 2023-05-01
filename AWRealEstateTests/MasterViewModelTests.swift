@@ -64,7 +64,7 @@ final class MasterViewModelTests: XCTestCase {
         let expFilter = expectation(description: "Filtering")
         let viewModel = MasterViewModel { expFilter.fulfill() }
         viewModel.fetchFilmResource { _ in
-            viewModel.searchTerm = "Lis"
+            viewModel.searchTerm = "lis"
         }
         waitForExpectations(timeout: 1)
         XCTAssertEqual(viewModel.filteredCast.count, 1)
@@ -78,5 +78,20 @@ final class MasterViewModelTests: XCTestCase {
         }
         waitForExpectations(timeout: 1)
         XCTAssertEqual(viewModel.filteredCast.count, 1)
+    }
+
+    func testFilterEqualCountResult() {
+        let ltExpFilter = expectation(description: "lt Filtering")
+        let rtExpFilter = expectation(description: "rt Filtering")
+        let ltViewModel = MasterViewModel { ltExpFilter.fulfill() }
+        let rtViewModel = MasterViewModel { rtExpFilter.fulfill() }
+        ltViewModel.fetchFilmResource { _ in
+            ltViewModel.searchTerm = "WI"
+        }
+        rtViewModel.fetchFilmResource { _ in
+            rtViewModel.searchTerm = "wi"
+        }
+        waitForExpectations(timeout: 1)
+        XCTAssertEqual(ltViewModel.filteredCast.count, rtViewModel.filteredCast.count)
     }
 }
