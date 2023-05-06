@@ -51,7 +51,7 @@ class LazyImageView: UIView {
     
     /// Fetch image and load into image view.  For an effective activity indicator this must be called from *viewWillAppear* or later.
     /// - Parameters:
-    ///   - model: Protocol the product conforms to.
+    ///   - model: Conforms to ImageModel.
     func performImageService<T: ImageModel>(model: T?) {
         guard let url = model?.imageURL else {
             imageView.image = UIImage(named: "Placeholder")
