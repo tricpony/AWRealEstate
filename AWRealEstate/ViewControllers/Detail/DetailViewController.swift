@@ -26,9 +26,13 @@ class DetailViewController: UIViewController {
         configureView()
         nameLabel.text = actor?.name
         roleLabel.text = actor?.role
-        imageView.performImageService(model: actor)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        imageView.performImageService(model: actor)
+    }
+
     /// Setup the view.
     private func configureView() {
         var layer = nameBanner.layer

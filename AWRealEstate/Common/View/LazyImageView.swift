@@ -30,13 +30,13 @@ class LazyImageView: UIView {
         layer.cornerRadius = 5
         layer.masksToBounds = true
         
-        pinwheel.style = .medium
+        pinwheel.style = Fixed.Idiom.isIpad ? .large : .medium
         pinwheel.hidesWhenStopped = true
         pinwheel.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(pinwheel)
         addSubview(imageView)
+        addSubview(pinwheel)
         imageView.pin(to: self)
         NSLayoutConstraint.activate([
             pinwheel.centerYAnchor.constraint(equalTo: centerYAnchor),
